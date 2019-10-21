@@ -58,7 +58,7 @@ public class Controller {
     }
 
     @GetMapping("/perfil/{id}")
-    public Pessoa perfil(@PathVariable("id") int id){
+    public Pessoa perfil(@PathVariable("id") long id){
         return service.listarId(id);
     }
 
