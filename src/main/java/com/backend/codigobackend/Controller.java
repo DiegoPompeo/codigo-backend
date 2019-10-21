@@ -11,7 +11,7 @@ public class Controller {
     @Autowired
     private PessoaService service;
 
-    @GetMapping("")
+    @GetMapping("/cientistas")
     public List<Pessoa> lista(){
         return service.listar();
     }
@@ -21,14 +21,14 @@ public class Controller {
         return service.add(p);
     }
 
-    @PostMapping("/login")
+    @PostMapping("")
     public Pessoa login(@RequestBody Pessoa p){
         List<Pessoa> lista = service.listar();
         String email = p.getEmail();
         String senha = p.getSenha();
         for (Pessoa pessoa : lista) {
             if (pessoa.getEmail().equals(email) && pessoa.getSenha().equals(senha)) {
-                return p;
+                return pessoa;
             }
         }
         return null;
@@ -56,7 +56,7 @@ public class Controller {
         return null;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/perfil/{id}")
     public Pessoa perfil(@PathVariable("id") int id){
         return service.listarId(id);
     }
