@@ -21,7 +21,7 @@ public class Controller {
         return service.add(p);
     }
 
-    @GetMapping("/login")
+    @PostMapping("/login")
     public Pessoa login(@RequestBody Pessoa p){
         List<Pessoa> lista = service.listar();
         String email = p.getEmail();
