@@ -28,7 +28,6 @@ public class Controller {
         String senha = p.getSenha();
         for (Pessoa pessoa : lista) {
             if (pessoa.getEmail().equals(email) && pessoa.getSenha().equals(senha)) {
-                p.setId(pessoa.getId());
                 return p;
             }
         }
@@ -64,7 +63,6 @@ public class Controller {
 
     @PutMapping("/{id}")
     public Pessoa editar(@RequestBody Pessoa p, @PathVariable("id") long id){
-        p.setId(id);
-        return service.edit(p);
+        return service.edit(service.listarId(id));
     }
 }

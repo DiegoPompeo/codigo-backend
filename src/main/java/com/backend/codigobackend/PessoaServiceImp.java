@@ -19,7 +19,7 @@ public class PessoaServiceImp implements PessoaService {
 
     @Override
     public Pessoa listarId(long id) {
-        return null;
+        return repository.findById(id);
     }
 
     @Override
