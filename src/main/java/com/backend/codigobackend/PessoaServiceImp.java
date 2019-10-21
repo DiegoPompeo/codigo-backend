@@ -48,9 +48,4 @@ public class PessoaServiceImp implements PessoaService {
         return repository.findByEmail(email);
     }
 
-    @Override
-    public Pessoa findPessoa(String email) {
-        return repository.findPessoa(email);
-    }
-
 }
