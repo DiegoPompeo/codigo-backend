@@ -11,7 +11,7 @@ public class Controller {
     @Autowired
     private PessoaService service;
 
-    @GetMapping("/error")
+    @GetMapping("")
     public List<Pessoa> lista(){
         return service.listar();
     }
