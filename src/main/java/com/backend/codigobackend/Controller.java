@@ -32,7 +32,7 @@ public class Controller {
                 return service.edit(pessoa);
             }
         }
-        return null;
+        return service.edit(null);
     }
 
     @GetMapping("/email/{email}")
