@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 
 @Entity
 @Data
@@ -19,6 +20,7 @@ class Pessoa {
 
     private String nome;
 
+    @Email
     private String email;
 
     private String senha;
