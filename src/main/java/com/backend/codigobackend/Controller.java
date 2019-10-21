@@ -56,12 +56,12 @@ public class Controller {
         return null;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/perfil/{id}")
     public Pessoa perfil(@PathVariable("id") int id){
         return service.listarId(id);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/editar/{id}")
     public Pessoa editar(@RequestBody Pessoa p, @PathVariable("id") long id){
         Pessoa pessoa = service.listarId(id);
         p.setCodSeg(p.getCodSeg());
