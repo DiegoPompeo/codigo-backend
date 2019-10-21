@@ -11,7 +11,7 @@ public class Controller {
     @Autowired
     private PessoaService service;
 
-    @GetMapping("/cientistas")
+    @GetMapping("")
     public List<Pessoa> lista(){
         return service.listar();
     }
@@ -21,7 +21,7 @@ public class Controller {
         return service.add(p);
     }
 
-    @PostMapping("")
+    @GetMapping("/login")
     public Pessoa login(@RequestBody Pessoa p){
         List<Pessoa> lista = service.listar();
         String email = p.getEmail();
@@ -56,13 +56,24 @@ public class Controller {
         return null;
     }
 
-    @GetMapping("/perfil/{id}")
+    @GetMapping("/{id}")
     public Pessoa perfil(@PathVariable("id") int id){
         return service.listarId(id);
     }
 
     @PutMapping("/{id}")
     public Pessoa editar(@RequestBody Pessoa p, @PathVariable("id") long id){
-        return service.edit(service.listarId(id));
+        Pessoa pessoa = service.listarId(id);
+        p.setCodSeg(p.getCodSeg());
+        p.setDataValidade(p.getDataValidade());
+        p.setEmail(p.getEmail());
+        p.setEmpresa(p.getEmpresa());
+        p.setNome(p.getNome());
+        p.setNomeNoCartao(p.getNomeNoCartao());
+        p.setNroCartao(p.getNroCartao());
+        p.setPaga(p.isPaga());
+        p.setQualidades(p.getQualidades());
+        p.setSenha(p.getSenha());
+        return service.edit(p);
     }
 }
