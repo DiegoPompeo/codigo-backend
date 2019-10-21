@@ -28,7 +28,7 @@ public class Controller {
         String senha = p.getSenha();
         for (Pessoa pessoa : lista) {
             if (pessoa.getEmail().equals(email) && pessoa.getSenha().equals(senha)) {
-                return pessoa;
+                return service.findPessoa(email);
             }
         }
         return null;
