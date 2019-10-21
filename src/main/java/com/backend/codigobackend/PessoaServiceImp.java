@@ -18,8 +18,8 @@ public class PessoaServiceImp implements PessoaService {
     }
 
     @Override
-    public Pessoa listarId(int id) {
-        return repository.findById(id);
+    public Pessoa listarId(long id) {
+        return null;
     }
 
     @Override
@@ -33,9 +33,8 @@ public class PessoaServiceImp implements PessoaService {
     }
 
     @Override
-    public void delete(int id) {
-        Pessoa pessoa = repository.findById(id);
-        repository.delete(pessoa);
+    public void delete(long id) {
+
     }
 
     @Override

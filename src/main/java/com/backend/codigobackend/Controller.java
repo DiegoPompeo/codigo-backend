@@ -9,7 +9,7 @@ import java.util.List;
 @RequestMapping("/redesocial")
 public class Controller {
     @Autowired
-    PessoaService service;
+    private PessoaService service;
 
     @GetMapping("")
     public List<Pessoa> lista(){
@@ -26,9 +26,9 @@ public class Controller {
         List<Pessoa> lista = service.listar();
         String email = p.getEmail();
         String senha = p.getSenha();
-        for (int i = 0; i < lista.size(); i++) {
-            if (lista.get(i).getEmail().equals(email) && lista.get(i).getSenha().equals(senha)){
-                p.setId(lista.get(i).getId());
+        for (Pessoa pessoa : lista) {
+            if (pessoa.getEmail().equals(email) && pessoa.getSenha().equals(senha)) {
+                p.setId(pessoa.getId());
                 return p;
             }
         }
@@ -38,8 +38,8 @@ public class Controller {
     @GetMapping("/email/{email}")
     public boolean verifica(@PathVariable("email") String email){
         List<Pessoa> lista = service.listar();
-        for (int i = 0; i < lista.size(); i++) {
-            if (lista.get(i).getEmail().equals(email)){
+        for (Pessoa pessoa : lista) {
+            if (pessoa.getEmail().equals(email)) {
                 return true;
             }
         }
@@ -49,9 +49,9 @@ public class Controller {
     @GetMapping("/buscar/{email}")
     public Pessoa busca(@PathVariable("email") String email){
         List<Pessoa> lista = service.listar();
-        for (int i = 0; i < lista.size(); i++) {
-            if (lista.get(i).getEmail().equals(email)){
-                return lista.get(i);
+        for (Pessoa pessoa : lista) {
+            if (pessoa.getEmail().equals(email)) {
+                return pessoa;
             }
         }
         return null;
@@ -63,7 +63,7 @@ public class Controller {
     }
 
     @PutMapping("/{id}")
-    public Pessoa editar(@RequestBody Pessoa p, @PathVariable("id") int id){
+    public Pessoa editar(@RequestBody Pessoa p, @PathVariable("id") long id){
         p.setId(id);
         return service.edit(p);
     }
