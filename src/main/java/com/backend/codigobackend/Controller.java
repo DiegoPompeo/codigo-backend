@@ -29,11 +29,10 @@ public class Controller {
         String senha = p.getSenha();
         for (Pessoa pessoa : lista) {
             if (pessoa.getEmail().equals(email) && pessoa.getSenha().equals(senha)) {
-                pessoa = service.listarId(pessoa.getId());
-                return service.edit(pessoa);
+                return pessoa;
             }
         }
-        return service.edit(null);
+        return null;
     }
 
     @GetMapping("/email/{email}")
