@@ -63,18 +63,18 @@ public class Controller {
     }
 
     @PutMapping("/editar/{id}")
-    public Pessoa editar(@RequestBody Pessoa p, @PathVariable("id") Long id){
-        Pessoa pessoa = service.listarId(id);
-        p.setCodSeg(p.getCodSeg());
-        p.setDataValidade(p.getDataValidade());
-        p.setEmail(p.getEmail());
-        p.setEmpresa(p.getEmpresa());
-        p.setNome(p.getNome());
-        p.setNomeNoCartao(p.getNomeNoCartao());
-        p.setNroCartao(p.getNroCartao());
-        p.setPaga(p.isPaga());
-        p.setQualidades(p.getQualidades());
-        p.setSenha(p.getSenha());
+    public Pessoa editar(@RequestBody Pessoa pessoa, @PathVariable("id") Long id){
+        Pessoa p = service.listarId(id);
+        p.setCodSeg(pessoa.getCodSeg());
+        p.setDataValidade(pessoa.getDataValidade());
+        p.setEmail(pessoa.getEmail());
+        p.setEmpresa(pessoa.getEmpresa());
+        p.setNome(pessoa.getNome());
+        p.setNomeNoCartao(pessoa.getNomeNoCartao());
+        p.setNroCartao(pessoa.getNroCartao());
+        p.setPaga(pessoa.isPaga());
+        p.setQualidades(pessoa.getQualidades());
+        p.setSenha(pessoa.getSenha());
         return service.edit(p);
     }
 }
