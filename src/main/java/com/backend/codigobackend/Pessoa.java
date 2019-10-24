@@ -16,7 +16,7 @@ class Pessoa {
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
-    private long id;
+    private int id;
 
     private String nome;
 
