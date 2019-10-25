@@ -57,9 +57,9 @@ public class Controller {
         return null;
     }
 
-    @GetMapping("/perfil/{id}")
-    public Pessoa perfil(@PathVariable("id") int id){
-        return service.listarId(id);
+    @GetMapping("/perfil/{email}")
+    public Pessoa perfil(@PathVariable("email") String email){
+        return service.findByPessoa(email);
     }
 
     @PutMapping("/editar/{email}")
