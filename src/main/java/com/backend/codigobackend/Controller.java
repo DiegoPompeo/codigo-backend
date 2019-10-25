@@ -62,9 +62,9 @@ public class Controller {
         return service.listarId(id);
     }
 
-    @PutMapping("/editar/{id}")
-    public Pessoa editar(@RequestBody Pessoa pessoa, @PathVariable("id") int id){
-        Pessoa p = service.listarId(id);
+    @PutMapping("/editar/{email}")
+    public Pessoa editar(@RequestBody Pessoa pessoa, @PathVariable("email") String email){
+        Pessoa p = service.findByPessoa(email);
         p.setCodSeg(pessoa.getCodSeg());
         p.setDataValidade(pessoa.getDataValidade());
         p.setEmail(pessoa.getEmail());

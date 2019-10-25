@@ -11,4 +11,5 @@ public interface PessoaRepository extends Repository<Pessoa, Long> {
     void delete(Pessoa pessoa);
     Pessoa findByNome(String nome);
     boolean findByEmail(String email);
+    Pessoa findByPessoa(String email);
 }
