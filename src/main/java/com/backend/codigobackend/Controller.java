@@ -29,8 +29,7 @@ public class Controller {
         String senha = p.getSenha();
         for (Pessoa pessoa : lista) {
             if (pessoa.getEmail().equals(email) && pessoa.getSenha().equals(senha)) {
-                p.setId(pessoa.getId());
-                return p;
+                return pessoa;
             }
         }
         return null;
@@ -64,8 +63,18 @@ public class Controller {
     }
 
     @PutMapping("/editar/{id}")
-    public Pessoa editar(@RequestBody Pessoa p, @PathVariable("id") int id){
-        p.setId(id);
+    public Pessoa editar(@RequestBody Pessoa pessoa, @PathVariable("id") int id){
+        Pessoa p = service.listarId(id);
+        p.setEmail(pessoa.getEmail());
+        p.setSenha(pessoa.getSenha());
+        p.setQualidades(pessoa.getQualidades());
+        p.setPaga(pessoa.isPaga());
+        p.setNroCartao(pessoa.getNroCartao());
+        p.setNomeNoCartao(pessoa.getNomeNoCartao());
+        p.setDataValidade(pessoa.getDataValidade());
+        p.setNome(pessoa.getNome());
+        p.setCodSeg(pessoa.getCodSeg());
+        p.setEmpresa(pessoa.getEmpresa());
         return service.edit(p);
     }
 

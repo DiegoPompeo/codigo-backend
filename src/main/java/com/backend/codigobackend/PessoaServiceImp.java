@@ -37,7 +37,6 @@ public class PessoaServiceImp implements PessoaService {
         return repository.findByNome(nome);
     }
 
-
     @Override
     public boolean findByEmail(String email) {
         return repository.findByEmail(email);
