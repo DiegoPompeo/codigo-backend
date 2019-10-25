@@ -10,5 +10,6 @@ public interface PessoaService {
     void delete(long id);
     Pessoa findNome(String nome);
     boolean findByEmail(String email);
+
     Pessoa findByPessoa(String email);
 }
