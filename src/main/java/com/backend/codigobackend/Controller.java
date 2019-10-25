@@ -29,7 +29,8 @@ public class Controller {
         String senha = p.getSenha();
         for (Pessoa pessoa : lista) {
             if (pessoa.getEmail().equals(email) && pessoa.getSenha().equals(senha)) {
-                return pessoa;
+                p.setId(pessoa.getId());
+                return p;
             }
         }
         return null;
@@ -57,30 +58,15 @@ public class Controller {
         return null;
     }
 
-    @GetMapping("/perfil/{email}")
-    public Pessoa perfil(@PathVariable("email") String email){
-        return service.findByPessoa(email);
+    @GetMapping("/perfil/{id}")
+    public Pessoa perfil(@PathVariable("id") int id){
+        return service.listarId(id);
     }
 
-    @PutMapping("/editar/{email}")
-    public Pessoa editar(@RequestBody Pessoa pessoa, @PathVariable("email") String email){
-        List<Pessoa> lista = service.listar();
-        for (Pessoa p : lista) {
-            if (p.getEmail().equals(email)) {
-                p.setId(pessoa.getId());
-                p.setCodSeg(pessoa.getCodSeg());
-                p.setDataValidade(pessoa.getDataValidade());
-                p.setEmail(pessoa.getEmail());
-                p.setEmpresa(pessoa.getEmpresa());
-                p.setNome(pessoa.getNome());
-                p.setNomeNoCartao(pessoa.getNomeNoCartao());
-                p.setNroCartao(pessoa.getNroCartao());
-                p.setPaga(pessoa.isPaga());
-                p.setQualidades(pessoa.getQualidades());
-                p.setSenha(pessoa.getSenha());
-                return service.edit(p);
-            }
-        }
-        return pessoa;
+    @PutMapping("/editar/{id}")
+    public Pessoa editar(@RequestBody Pessoa p, @PathVariable("id") int id){
+        p.setId(id);
+        return service.edit(p);
     }
+
 }
