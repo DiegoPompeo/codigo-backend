@@ -29,11 +29,7 @@ public class PessoaServiceImp implements PessoaService {
 
     @Override
     public Pessoa edit(Pessoa p) {
-        Pessoa pessoa = repository.findById(p.getId());
-        if (pessoa != null){
-            repository.save(pessoa);
-        }
-        return pessoa;
+        return repository.save(p);
     }
 
     @Override
