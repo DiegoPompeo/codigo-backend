@@ -33,7 +33,7 @@ public class PessoaServiceImp implements PessoaService {
         if (pessoa != null){
             repository.save(pessoa);
         }
-        return p;
+        return pessoa;
     }
 
     @Override
