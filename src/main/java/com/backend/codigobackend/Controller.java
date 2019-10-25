@@ -58,13 +58,13 @@ public class Controller {
         return null;
     }
 
-    @GetMapping("/perfil/{email}")
-    public Pessoa perfil(@PathVariable("email") String email){
-        return service.findByPessoa(email);
+    @GetMapping("/perfil/{id}")
+    public ResponseEntity<Pessoa> perfil(@PathVariable("id") int id){
+        return ResponseEntity.ok().body(service.listarId(id));
     }
 
-    @PutMapping("/editar/{email}")
-    public ResponseEntity<Pessoa> editar(@RequestBody Pessoa pessoa, @PathVariable("email") String email){
+    @PutMapping("/editar/{id}")
+    public Pessoa editar(@RequestBody Pessoa pessoa, @PathVariable("email") String email){
         Pessoa p = service.findByPessoa(email);
         p.setCodSeg(pessoa.getCodSeg());
         p.setDataValidade(pessoa.getDataValidade());
@@ -77,7 +77,6 @@ public class Controller {
         p.setQualidades(pessoa.getQualidades());
         p.setSenha(pessoa.getSenha());
 
-        final Pessoa updatedPessoa = service.edit(p);
-        return ResponseEntity.ok(updatedPessoa);
+        return pessoa;
     }
 }
