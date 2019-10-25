@@ -69,6 +69,7 @@ public class Controller {
             if (p.getEmail().equals(email)) {
                 p.setCodSeg(pessoa.getCodSeg());
                 p.setDataValidade(pessoa.getDataValidade());
+                p.setEmail(pessoa.getEmail());
                 p.setEmpresa(pessoa.getEmpresa());
                 p.setNome(pessoa.getNome());
                 p.setNomeNoCartao(pessoa.getNomeNoCartao());
