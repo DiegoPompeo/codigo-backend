@@ -1,6 +1,7 @@
 package com.backend.codigobackend;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -58,28 +59,25 @@ public class Controller {
     }
 
     @GetMapping("/perfil/{id}")
-    public Pessoa perfil(@PathVariable("id") int id){
-        return service.listarId(id);
+    public ResponseEntity<Pessoa> perfil(@PathVariable("id") int id){
+        return ResponseEntity.ok().body(service.listarId(id));
     }
 
-    @PutMapping("/editar/{email}")
-    public Pessoa editar(@RequestBody Pessoa pessoa, @PathVariable("email") String email){
-        List<Pessoa> lista = service.listar();
-        for (Pessoa p : lista) {
-            if (p.getEmail().equals(email)) {
-                p.setCodSeg(pessoa.getCodSeg());
-                p.setDataValidade(pessoa.getDataValidade());
-                p.setEmail(pessoa.getEmail());
-                p.setEmpresa(pessoa.getEmpresa());
-                p.setNome(pessoa.getNome());
-                p.setNomeNoCartao(pessoa.getNomeNoCartao());
-                p.setNroCartao(pessoa.getNroCartao());
-                p.setPaga(pessoa.isPaga());
-                p.setQualidades(pessoa.getQualidades());
-                p.setSenha(pessoa.getSenha());
-                return service.edit(p);
-            }
-        }
-        return pessoa;
+    @PutMapping("/editar/{id}")
+    public ResponseEntity<Pessoa> editar(@RequestBody Pessoa pessoa, @PathVariable("id") int id){
+        Pessoa p = service.listarId(id);
+        p.setCodSeg(pessoa.getCodSeg());
+        p.setDataValidade(pessoa.getDataValidade());
+        p.setEmail(pessoa.getEmail());
+        p.setEmpresa(pessoa.getEmpresa());
+        p.setNome(pessoa.getNome());
+        p.setNomeNoCartao(pessoa.getNomeNoCartao());
+        p.setNroCartao(pessoa.getNroCartao());
+        p.setPaga(pessoa.isPaga());
+        p.setQualidades(pessoa.getQualidades());
+        p.setSenha(pessoa.getSenha());
+
+        final Pessoa updatedPessoa = service.edit(p);
+        return ResponseEntity.ok(updatedPessoa);
     }
 }
