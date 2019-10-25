@@ -1,8 +1,10 @@
 package com.backend.codigobackend;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @CrossOrigin("*")
@@ -58,13 +60,14 @@ public class Controller {
     }
 
     @GetMapping("/perfil/{id}")
-    public Pessoa perfil(@PathVariable("id") int id){
-        return service.listarId(id);
+    public ResponseEntity<Pessoa> perfil(@PathVariable("id") int id){
+        return ResponseEntity.ok().body(service.listarId(id));
     }
 
     @PutMapping("/editar/{id}")
-    public Pessoa editar(@RequestBody Pessoa pessoa, @PathVariable("id") int id){
+    public ResponseEntity<Pessoa> editar(@Valid @RequestBody Pessoa pessoa, @PathVariable("id") int id){
         Pessoa p = service.listarId(id);
+
         p.setEmail(pessoa.getEmail());
         p.setSenha(pessoa.getSenha());
         p.setQualidades(pessoa.getQualidades());
@@ -75,7 +78,9 @@ public class Controller {
         p.setNome(pessoa.getNome());
         p.setCodSeg(pessoa.getCodSeg());
         p.setEmpresa(pessoa.getEmpresa());
-        return service.edit(p);
+
+        final Pessoa updatedPessoa = service.edit(p);
+        return ResponseEntity.ok(updatedPessoa);
     }
 
 }
