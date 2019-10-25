@@ -67,6 +67,7 @@ public class Controller {
         List<Pessoa> lista = service.listar();
         for (Pessoa p : lista) {
             if (p.getEmail().equals(email)) {
+                p.setId(pessoa.getId());
                 p.setCodSeg(pessoa.getCodSeg());
                 p.setDataValidade(pessoa.getDataValidade());
                 p.setEmail(pessoa.getEmail());
