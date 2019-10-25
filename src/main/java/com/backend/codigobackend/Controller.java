@@ -62,19 +62,24 @@ public class Controller {
         return service.listarId(id);
     }
 
-    @PutMapping("/editar/{id}")
-    public Pessoa editar(@RequestBody Pessoa pessoa, @PathVariable("id") int id){
-        Pessoa p = service.listarId(id);
-        p.setCodSeg(pessoa.getCodSeg());
-        p.setDataValidade(pessoa.getDataValidade());
-        p.setEmail(pessoa.getEmail());
-        p.setEmpresa(pessoa.getEmpresa());
-        p.setNome(pessoa.getNome());
-        p.setNomeNoCartao(pessoa.getNomeNoCartao());
-        p.setNroCartao(pessoa.getNroCartao());
-        p.setPaga(pessoa.isPaga());
-        p.setQualidades(pessoa.getQualidades());
-        p.setSenha(pessoa.getSenha());
-        return service.edit(p);
+    @PutMapping("/editar/{email}")
+    public Pessoa editar(@RequestBody Pessoa pessoa, @PathVariable("id") String email){
+        List<Pessoa> lista = service.listar();
+        for (Pessoa p : lista) {
+            if (p.getEmail().equals(email)) {
+                p.setCodSeg(pessoa.getCodSeg());
+                p.setDataValidade(pessoa.getDataValidade());
+                p.setEmail(pessoa.getEmail());
+                p.setEmpresa(pessoa.getEmpresa());
+                p.setNome(pessoa.getNome());
+                p.setNomeNoCartao(pessoa.getNomeNoCartao());
+                p.setNroCartao(pessoa.getNroCartao());
+                p.setPaga(pessoa.isPaga());
+                p.setQualidades(pessoa.getQualidades());
+                p.setSenha(pessoa.getSenha());
+                return service.edit(p);
+            }
+        }
+        return pessoa;
     }
 }
