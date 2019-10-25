@@ -9,6 +9,4 @@ public interface PessoaService {
     Pessoa edit(Pessoa p);
     Pessoa findNome(String nome);
     boolean findByEmail(String email);
-
-    Pessoa findByPessoa(String email);
 }

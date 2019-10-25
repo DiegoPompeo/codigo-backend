@@ -10,5 +10,4 @@ public interface PessoaRepository extends Repository<Pessoa, Integer> {
     Pessoa save(Pessoa pessoa);
     Pessoa findByNome(String nome);
     boolean findByEmail(String email);
-    Pessoa findByPessoa(String email);
 }
