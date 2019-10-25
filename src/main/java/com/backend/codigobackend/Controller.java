@@ -70,7 +70,6 @@ public class Controller {
             if (p.getEmail().equals(email)) {
                 p.setEmail(pessoa.getEmail());
                 p.setSenha(pessoa.getSenha());
-                p.setQualidades(pessoa.getQualidades());
                 p.setPaga(pessoa.isPaga());
                 p.setNroCartao(pessoa.getNroCartao());
                 p.setNomeNoCartao(pessoa.getNomeNoCartao());
@@ -78,6 +77,12 @@ public class Controller {
                 p.setNome(pessoa.getNome());
                 p.setCodSeg(pessoa.getCodSeg());
                 p.setEmpresa(pessoa.getEmpresa());
+                p.setInicioDaAtividade(pessoa.getInicioDaAtividade());
+                p.setDataNascimento(pessoa.getDataNascimento());
+                p.setNivelEscolaridade(pessoa.getNivelEscolaridade());
+                p.setCidade(pessoa.getCidade());
+                p.setEstado(pessoa.getEstado());
+                p.setSalario(pessoa.getSalario());
                 return service.edit(p);
             }
         }

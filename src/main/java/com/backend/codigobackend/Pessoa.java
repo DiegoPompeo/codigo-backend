@@ -7,6 +7,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.math.BigDecimal;
 
 @Entity
 @Data
@@ -35,7 +36,17 @@ class Pessoa {
 
     private String empresa;
 
-    private String qualidades;
+    private String inicioDaAtividade;
+
+    private String dataNascimento;
+
+    private String nivelEscolaridade;
+
+    private String cidade;
+
+    private String estado;
+
+    private BigDecimal salario;
 
     private boolean paga;
 }
