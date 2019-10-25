@@ -59,8 +59,8 @@ public class Controller {
     }
 
     @GetMapping("/perfil/{email}")
-    public ResponseEntity<Pessoa> perfil(@PathVariable("email") String email){
-        return ResponseEntity.ok().body(service.findByPessoa(email));
+    public Pessoa perfil(@PathVariable("email") String email){
+        return service.findByPessoa(email);
     }
 
     @PutMapping("/editar/{email}")
