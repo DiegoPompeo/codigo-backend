@@ -34,6 +34,7 @@ public class PessoaServiceImp implements PessoaService {
 
     @Override
     public void delete(long id) {
+
     }
 
     @Override
@@ -45,6 +46,11 @@ public class PessoaServiceImp implements PessoaService {
     @Override
     public boolean findByEmail(String email) {
         return repository.findByEmail(email);
+    }
+
+    @Override
+    public Pessoa findByPessoa(String email) {
+        return repository.findByPessoa(email);
     }
 
 }

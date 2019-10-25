@@ -58,14 +58,14 @@ public class Controller {
         return null;
     }
 
-    @GetMapping("/perfil/{id}")
-    public ResponseEntity<Pessoa> perfil(@PathVariable("id") long id){
-        return ResponseEntity.ok().body(service.listarId(id));
+    @GetMapping("/perfil/{email}")
+    public ResponseEntity<Pessoa> perfil(@PathVariable("email") String email){
+        return ResponseEntity.ok().body(service.findByPessoa(email));
     }
 
-    @PutMapping("/editar/{id}")
-    public ResponseEntity<Pessoa> editar(@RequestBody Pessoa pessoa, @PathVariable("id") long id){
-        Pessoa p = service.listarId(id);
+    @PutMapping("/editar/{email}")
+    public ResponseEntity<Pessoa> editar(@RequestBody Pessoa pessoa, @PathVariable("email") String email){
+        Pessoa p = service.findByPessoa(email);
         p.setCodSeg(pessoa.getCodSeg());
         p.setDataValidade(pessoa.getDataValidade());
         p.setEmail(pessoa.getEmail());
