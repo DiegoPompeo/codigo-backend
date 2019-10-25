@@ -33,11 +33,6 @@ public class PessoaServiceImp implements PessoaService {
     }
 
     @Override
-    public void delete(long id) {
-
-    }
-
-    @Override
     public Pessoa findNome(String nome) {
         return repository.findByNome(nome);
     }

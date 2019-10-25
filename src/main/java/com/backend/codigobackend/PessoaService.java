@@ -7,7 +7,6 @@ public interface PessoaService {
     Pessoa listarId(long id);
     Pessoa add(Pessoa p);
     Pessoa edit(Pessoa p);
-    void delete(long id);
     Pessoa findNome(String nome);
     boolean findByEmail(String email);
 

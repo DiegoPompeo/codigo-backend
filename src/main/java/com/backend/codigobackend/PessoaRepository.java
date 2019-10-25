@@ -8,7 +8,6 @@ public interface PessoaRepository extends Repository<Pessoa, Long> {
     List<Pessoa> findAll();
     Pessoa findById(long id);
     Pessoa save(Pessoa pessoa);
-    void delete(Pessoa pessoa);
     Pessoa findByNome(String nome);
     boolean findByEmail(String email);
     Pessoa findByPessoa(String email);
