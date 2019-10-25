@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface PessoaService {
     List<Pessoa> listar();
-    Pessoa listarId(int id);
+    Pessoa listarId(long id);
     Pessoa add(Pessoa p);
     Pessoa edit(Pessoa p);
     void delete(long id);

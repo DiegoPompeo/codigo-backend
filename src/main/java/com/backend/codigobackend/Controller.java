@@ -59,12 +59,12 @@ public class Controller {
     }
 
     @GetMapping("/perfil/{id}")
-    public ResponseEntity<Pessoa> perfil(@PathVariable("id") int id){
+    public ResponseEntity<Pessoa> perfil(@PathVariable("id") long id){
         return ResponseEntity.ok().body(service.listarId(id));
     }
 
     @PutMapping("/editar/{id}")
-    public ResponseEntity<Pessoa> editar(@RequestBody Pessoa pessoa, @PathVariable("id") int id){
+    public ResponseEntity<Pessoa> editar(@RequestBody Pessoa pessoa, @PathVariable("id") long id){
         Pessoa p = service.listarId(id);
         p.setCodSeg(pessoa.getCodSeg());
         p.setDataValidade(pessoa.getDataValidade());
