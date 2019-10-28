@@ -45,8 +45,6 @@ class Pessoa {
 
     private String estado;
 
-    private String salario;
-
     private boolean paga;
 
 }
