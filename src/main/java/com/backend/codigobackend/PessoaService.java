@@ -7,6 +7,6 @@ public interface PessoaService {
     Pessoa listarId(int id);
     Pessoa add(Pessoa p);
     Pessoa edit(Pessoa p);
-    Pessoa findNome(String nome);
+    List<Pessoa> findNome(String nome);
     boolean findByEmail(String email);
 }

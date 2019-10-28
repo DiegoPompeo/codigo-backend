@@ -66,6 +66,11 @@ public class Controller {
         return null;
     }
 
+    @GetMapping("/buscarCientista/{email}")
+    public List<Pessoa> buscaCientista(@PathVariable("email") String email){
+        return service.findNome(email);
+    }
+
     @GetMapping("/perfil/{id}")
     public Pessoa perfil(@PathVariable("id") int id){
         return service.listarId(id);

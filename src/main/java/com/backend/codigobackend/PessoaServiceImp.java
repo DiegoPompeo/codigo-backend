@@ -33,7 +33,7 @@ public class PessoaServiceImp implements PessoaService {
     }
 
     @Override
-    public Pessoa findNome(String nome) {
+    public List<Pessoa> findNome(String nome) {
         return repository.findByNome(nome);
     }
 
