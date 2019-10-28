@@ -46,7 +46,8 @@ class Pessoa {
 
     private String estado;
 
-    private BigDecimal salario;
+    private String salario;
 
     private boolean paga;
+
 }
