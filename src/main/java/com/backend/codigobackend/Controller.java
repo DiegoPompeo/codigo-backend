@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin("*")
@@ -12,6 +13,13 @@ import java.util.List;
 public class Controller {
     @Autowired
     private PessoaService service;
+
+    @Autowired
+    private PostService postService;
+
+    @Autowired
+    private PessoaRecomendadaService pessoaRecomendadaService;
+
 
     @GetMapping("")
     public List<Pessoa> lista(){
@@ -88,5 +96,30 @@ public class Controller {
         }
         return pessoa;
     }
+    @PostMapping("/addPost")
+    public Post addPost(@RequestBody Post post){
+        return postService.add(post);
+    }
 
+    @GetMapping("/verPost/{email}")
+    public List<Post> buscaPost(@PathVariable("email") String email){
+        List<Post> lista = postService.listar();
+        List<Post> listaPostEmail = new ArrayList<>();
+        for (Post post : lista) {
+            if (post.getEmail().equals(email)) {
+                listaPostEmail.add(post);
+            }
+        }
+        return listaPostEmail;
+    }
+
+    @PostMapping("/addRecomendacao")
+    public PessoaRecomendada addRecomendacao(@RequestBody PessoaRecomendada pessoaRecomendada){
+        return pessoaRecomendadaService.add(pessoaRecomendada);
+    }
+
+    @GetMapping("/getRecomendacao")
+    public List<PessoaRecomendada> listRecomendacao(){
+        return pessoaRecomendadaService.listar();
+    }
 }
