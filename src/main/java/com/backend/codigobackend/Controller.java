@@ -95,7 +95,6 @@ public class Controller {
                 p.setNivelEscolaridade(pessoa.getNivelEscolaridade());
                 p.setCidade(pessoa.getCidade());
                 p.setEstado(pessoa.getEstado());
-                p.setSalario(pessoa.getSalario());
                 return service.edit(p);
             }
         }
