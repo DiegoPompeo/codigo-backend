@@ -27,7 +27,7 @@ public class Controller {
     }
 
     @PostMapping("/signup")
-    public Pessoa adiciona(@RequestBody Pessoa p){
+    public Pessoa adiciona(@Valid @RequestBody Pessoa p){
         return service.add(p);
     }
 
