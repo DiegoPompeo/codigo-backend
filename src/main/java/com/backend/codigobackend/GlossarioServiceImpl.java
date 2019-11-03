@@ -31,6 +31,11 @@ public class GlossarioServiceImpl implements GlossarioService{
     }
 
     @Override
+    public void deleteTodos() {
+        glossarioRepository.deleteAll();
+    }
+
+    @Override
     public Glossario encontrarNome(String nome) {
         return glossarioRepository.findByNome(nome);
     }

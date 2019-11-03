@@ -10,4 +10,5 @@ public interface GlossarioRepository extends Repository<Glossario, Integer> {
     Glossario save(Glossario glossario);
     void delete(Glossario glossario);
     Glossario findByNome(String nome);
+    void deleteAll();
 }

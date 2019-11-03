@@ -7,5 +7,6 @@ public interface GlossarioService {
     Glossario encontrarId(int id);
     Glossario add(Glossario glossario);
     void delete(Glossario glossario);
+    void deleteTodos();
     Glossario encontrarNome(String nome);
 }
