@@ -27,20 +27,20 @@ public class CodigobackendApplication  implements CommandLineRunner {
 		repository.deleteAll();
 		Glossario g = new Glossario();
 		g.setNome("Algoritmo");
-
 		repository.save(g);
+
 		g = new Glossario();
 		g.setNome("AngularJS");
-
 		repository.save(g);
+
 		g = new Glossario();
 		g.setNome("Inteligência Artificial");
-
 		repository.save(g);
+
 		g = new Glossario();
 		g.setNome("Retropropagação");
-
 		repository.save(g);
+
 		g = new Glossario();
 		g.setNome("Inteligência Artificial");
 		repository.save(g);
@@ -93,19 +93,18 @@ public class CodigobackendApplication  implements CommandLineRunner {
 		g.setNome("Variável Contínua");
 		repository.save(g);
 
-		repository.save(g);
 		g = new Glossario();
 		g.setNome("Correlação");
-
 		repository.save(g);
+
 		g = new Glossario();
 		g.setNome("Covariância");
-
 		repository.save(g);
+
 		g = new Glossario();
 		g.setNome("Validação Cruzada");
-
 		repository.save(g);
+
 		g = new Glossario();
 		g.setNome("D3");
 		repository.save(g);
