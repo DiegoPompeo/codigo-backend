@@ -24,7 +24,6 @@ public class CodigobackendApplication  implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) {
-        ArrayList<String> lista = new ArrayList<>(
                 Arrays.asList(
                         "AngularJS", "Inteligência Artificial", "Retropropagação" ,
                         "Teorema de Bayes" , "Rede bayesiana", "Viés" ,"Big Data" , "Distribuição Binomial",
@@ -49,9 +48,7 @@ public class CodigobackendApplication  implements CommandLineRunner {
                         "Aprendizado Supervisionado", "Máquina de Vetor de Suporte" , "Distribuição T", "Quadro",
                         "Dados de Séries Temporais", "UIMA" , "Aprendizado não Supervisionado", "Variação", "Vetor", "Espaço Vetorial",
                         "Weka"
-                )
-        );
-        lista.forEach(x -> {
+                ).forEach(x -> {
             Glossario g = new Glossario();
             g.setNome(x);
             repository.save(g);
