@@ -42,7 +42,7 @@ public class CodigobackendApplication {
 						"Dados de Séries Temporais", "UIMA" , "Aprendizado não Supervisionado", "Variação", "Vetor", "Espaço Vetorial",
 						"Weka")
 		);
-		if(repository.findAll().isEmpty()){
+		if(!repository.findAll().isEmpty()){
 				lista.forEach(nome -> {
 					Glossario glossario = new Glossario();
 					glossario.setNome(nome);
