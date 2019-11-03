@@ -33,7 +33,7 @@ public class Controller {
 
     @PostMapping("/signup")
     public ResponseEntity<Pessoa> adiciona(@Valid @RequestBody Pessoa p) {
-        return ResponseEntity.ok(service.add(p));
+        return ResponseEntity.ok().body(service.add(p));
     }
 
     @PostMapping("/login")
@@ -108,7 +108,7 @@ public class Controller {
 
     @PostMapping("/addPost")
     public ResponseEntity<Post> addPost(@RequestBody Post post) {
-        return ResponseEntity.ok(postService.add(post));
+        return ResponseEntity.ok().body(postService.add(post));
     }
 
     @GetMapping("/verPost/{email}")
