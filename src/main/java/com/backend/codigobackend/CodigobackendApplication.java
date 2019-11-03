@@ -5,7 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.util.stream.Stream;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 @SpringBootApplication
 public class CodigobackendApplication {
@@ -16,8 +17,8 @@ public class CodigobackendApplication {
 
 	@Bean
 	ApplicationRunner init(GlossarioRepository repository){
-		if(repository.findAll().isEmpty()){
-				Stream.of("Algoritmo", "AngularJS", "Inteligência Artificial", "Retropropagação" ,
+		ArrayList<String> lista = new ArrayList<>(
+				Arrays.asList("Algoritmo", "AngularJS", "Inteligência Artificial", "Retropropagação" ,
 						"Teorema de Bayes" , "Rede bayesiana", "Viés" ,"Big Data" , "Distribuição Binomial",
 						"Teste Qui-Quadrado" ,"Classificação", "Agrupamento", "Coeficiente", "Linguística Computacional",
 						"Intervalo de Confiança", "Variável Contínua" , "Correlação" ,"Covariância" , "Validação Cruzada",
@@ -39,8 +40,10 @@ public class CodigobackendApplication {
 						"Distribuição Normal Padrão", "Pontuação Padronizada", "Stata" , "Estratos, Amostragem Estratificada",
 						"Aprendizado Supervisionado", "Máquina de Vetor de Suporte" , "Distribuição T", "Quadro",
 						"Dados de Séries Temporais", "UIMA" , "Aprendizado não Supervisionado", "Variação", "Vetor", "Espaço Vetorial",
-						"Weka"
-				).forEach(nome -> {
+						"Weka")
+		);
+		if(repository.findAll().isEmpty()){
+				lista.forEach(nome -> {
 					Glossario glossario = new Glossario();
 					glossario.setNome(nome);
 					repository.save(glossario);
