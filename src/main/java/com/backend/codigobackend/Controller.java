@@ -134,6 +134,12 @@ public class Controller {
 
     @GetMapping("/glossario")
     public List<Glossario> listaGlossario() {
+        return glossarioService.listar();
+    }
+
+    @PostMapping("/addGlossario")
+    public void addGlossario(){
+
         ArrayList<String> lista = new ArrayList<>(
                 Arrays.asList(
                         "AngularJS", "Inteligência Artificial", "Retropropagação",
@@ -166,6 +172,5 @@ public class Controller {
             g.setNome(data);
             glossarioService.add(g);
         });
-        return glossarioService.listar();
     }
 }
