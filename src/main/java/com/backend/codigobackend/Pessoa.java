@@ -47,4 +47,6 @@ class Pessoa {
 
     private boolean paga;
 
+    private String qualidades;
+
 }
