@@ -20,8 +20,4 @@ class Glossario {
     private int id;
 
     private String nome;
-
-    Glossario(String nome) {
-        this.nome = nome;
-    }
 }
