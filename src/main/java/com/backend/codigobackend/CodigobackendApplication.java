@@ -13,7 +13,7 @@ import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
 @SpringBootApplication
-public class CodigobackendApplication  implements CommandLineRunner {
+public class CodigobackendApplication {
 
 	@Autowired
 	private GlossarioRepository repository;
@@ -22,10 +22,5 @@ public class CodigobackendApplication  implements CommandLineRunner {
 		SpringApplication.run(CodigobackendApplication.class, args);
 	}
 
-	@Override
-	public void run(String... args) {
-		Glossario g = new Glossario();
-		g.setNome("Inteligência Artificial");
-		repository.save(g);
-	}
+
 }
