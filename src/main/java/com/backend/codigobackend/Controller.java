@@ -139,7 +139,7 @@ public class Controller {
     }
 
     @PostMapping("/addGlossario")
-    public Glossario addGlossario(@RequestBody Glossario glossario){
-        return glossarioService.add(glossario);
+    public ResponseEntity<Glossario> addGlossario(@RequestBody Glossario glossario){
+        return ResponseEntity.ok().body(glossarioService.add(glossario));
     }
 }
