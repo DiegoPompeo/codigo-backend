@@ -100,6 +100,7 @@ public class Controller {
                 p.setNivelEscolaridade(pessoa.getNivelEscolaridade());
                 p.setCidade(pessoa.getCidade());
                 p.setEstado(pessoa.getEstado());
+                p.setQualidades(pessoa.getQualidades());
                 return service.edit(p);
             }
         }
