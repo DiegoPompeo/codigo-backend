@@ -138,4 +138,8 @@ public class Controller {
         return glossarioService.listar();
     }
 
+    @PostMapping("/addGlossario")
+    public Glossario addGlossario(@RequestBody Glossario glossario){
+        return glossarioService.add(glossario);
+    }
 }
