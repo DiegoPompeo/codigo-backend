@@ -20,6 +20,9 @@ public class Controller {
     @Autowired
     private PessoaRecomendadaService pessoaRecomendadaService;
 
+    @Autowired
+    private GlossarioService glossarioService;
+
 
     @GetMapping("")
     public List<Pessoa> lista(){
@@ -125,5 +128,10 @@ public class Controller {
     @GetMapping("/getRecomendacao")
     public List<PessoaRecomendada> listRecomendacao(){
         return pessoaRecomendadaService.listar();
+    }
+
+    @GetMapping("/glossario")
+    public List<Glossario> listaGlossario(){
+        return glossarioService.listar();
     }
 }
