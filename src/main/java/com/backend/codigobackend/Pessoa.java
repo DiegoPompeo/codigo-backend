@@ -23,6 +23,8 @@ class Pessoa {
     @Email
     private String email;
 
+    private String interesse;
+
     private String senha;
 
     private String nroCartao;
@@ -46,7 +48,5 @@ class Pessoa {
     private String estado;
 
     private boolean paga;
-
-    private String interesses;
 
 }
