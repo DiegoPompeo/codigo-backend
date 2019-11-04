@@ -47,6 +47,6 @@ class Pessoa {
 
     private boolean paga;
 
-    private String qualidades;
+    private String interesses;
 
 }
