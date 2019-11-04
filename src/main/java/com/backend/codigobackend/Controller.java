@@ -71,9 +71,9 @@ public class Controller {
         return null;
     }
 
-    @GetMapping("/buscarCientista/{email}")
-    public List<Pessoa> buscaCientista(@PathVariable("email") String email) {
-        return service.findNome(email);
+    @GetMapping("/buscarCientista/{nome}")
+    public List<Pessoa> buscaCientista(@PathVariable("nome") String nome) {
+        return service.findNome(nome);
     }
 
     @GetMapping("/perfil/{id}")
