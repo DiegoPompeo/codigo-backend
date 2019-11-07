@@ -2,13 +2,14 @@ package com.backend.codigobackend;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
 
 @Entity
 @Data
@@ -20,9 +21,9 @@ class Post {
     @GenericGenerator(name = "increment", strategy = "increment")
     private int id;
 
-    @NotBlank
+    @Column
     private String conteudo;
 
-    @NotBlank
+    @Column
     private String email;
 }
