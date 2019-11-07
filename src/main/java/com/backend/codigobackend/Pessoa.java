@@ -1,6 +1,5 @@
 package com.backend.codigobackend;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,8 +7,6 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import java.util.Date;
 
 @Entity
 @Data
@@ -51,4 +48,5 @@ class Pessoa {
     private String estado;
 
     private boolean paga;
+
 }

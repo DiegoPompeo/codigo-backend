@@ -1,13 +1,11 @@
 package com.backend.codigobackend;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @CrossOrigin("*")
@@ -33,8 +31,8 @@ public class Controller {
     }
 
     @PostMapping("/signup")
-    public Pessoa adiciona(@RequestBody Pessoa p) {
-        return service.add(p);
+    public ResponseEntity<Pessoa> adiciona(@Valid @RequestBody Pessoa p) {
+        return ResponseEntity.ok().body(service.add(p));
     }
 
     @PostMapping("/login")
@@ -83,7 +81,7 @@ public class Controller {
     }
 
     @PutMapping("/editar/{email}")
-    public Pessoa editar(@RequestBody @Valid Pessoa pessoa, @PathVariable("email") String email) {
+    public Pessoa editar(@Valid @RequestBody Pessoa pessoa, @PathVariable("email") String email) {
         List<Pessoa> lista = service.listar();
         for (Pessoa p : lista) {
             if (p.getEmail().equals(email)) {
@@ -109,8 +107,8 @@ public class Controller {
     }
 
     @PostMapping("/addPost")
-    public ResponseEntity<Post> addPost(@RequestBody @Valid Post post) {
-        return new ResponseEntity<>(postService.add(post), HttpStatus.CREATED);
+    public ResponseEntity<Post> addPost(@RequestBody Post post) {
+        return ResponseEntity.ok().body(postService.add(post));
     }
 
     @GetMapping("/verPost/{email}")
