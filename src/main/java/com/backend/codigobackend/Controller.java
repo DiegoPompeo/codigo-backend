@@ -33,8 +33,8 @@ public class Controller {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<Pessoa> adiciona(@RequestBody @Valid Pessoa p) {
-        return new ResponseEntity<>(service.add(p), HttpStatus.CREATED);
+    public Pessoa adiciona(@RequestBody @Valid Pessoa p) {
+        return service.add(p);
     }
 
     @PostMapping("/login")
