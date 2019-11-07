@@ -83,7 +83,7 @@ public class Controller {
     }
 
     @PutMapping("/editar/{email}")
-    public ResponseEntity<Pessoa> editar(@RequestBody Pessoa pessoa, @PathVariable("email") String email) {
+    public ResponseEntity<Pessoa> editar(@Valid @RequestBody Pessoa pessoa, @PathVariable("email") String email) {
         List<Pessoa> lista = service.listar();
         for (Pessoa p : lista) {
             if (p.getEmail().equals(email)) {
@@ -105,7 +105,7 @@ public class Controller {
                 return ResponseEntity.ok().body(service.edit(p));
             }
         }
-        return  ResponseEntity.ok().body(pessoa);
+        return ResponseEntity.ok().body(pessoa);
     }
 
     @PostMapping("/addPost")
