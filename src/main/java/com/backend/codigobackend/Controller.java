@@ -33,7 +33,7 @@ public class Controller {
     }
 
     @PostMapping("/signup")
-    public Pessoa adiciona(@RequestBody @Valid Pessoa p) {
+    public Pessoa adiciona(@RequestBody Pessoa p) {
         return service.add(p);
     }
 
