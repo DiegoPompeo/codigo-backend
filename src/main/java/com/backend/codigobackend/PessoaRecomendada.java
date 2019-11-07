@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,9 +20,9 @@ class PessoaRecomendada {
     @GenericGenerator(name = "increment", strategy = "increment")
     private int id;
 
-    @Column
+    @NotBlank
     private String email;
 
-    @Column
+    @NotBlank
     private String emailRecomendada;
 }

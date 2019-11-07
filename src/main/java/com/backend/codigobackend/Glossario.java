@@ -8,6 +8,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @NoArgsConstructor
@@ -19,5 +20,6 @@ class Glossario {
     @GenericGenerator(name = "increment", strategy= "increment")
     private int id;
 
+    @NotBlank
     private String nome;
 }

@@ -1,6 +1,7 @@
 package com.backend.codigobackend;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,8 +33,8 @@ public class Controller {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<Pessoa> adiciona(@Valid @RequestBody Pessoa p) {
-        return ResponseEntity.ok().body(service.add(p));
+    public ResponseEntity<Pessoa> adiciona(@RequestBody @Valid Pessoa p) {
+        return new ResponseEntity<>(service.add(p), HttpStatus.CREATED);
     }
 
     @PostMapping("/login")
@@ -82,7 +83,7 @@ public class Controller {
     }
 
     @PutMapping("/editar/{email}")
-    public Pessoa editar(@Valid @RequestBody Pessoa pessoa, @PathVariable("email") String email) {
+    public ResponseEntity<Pessoa> editar(@RequestBody Pessoa pessoa, @PathVariable("email") String email) {
         List<Pessoa> lista = service.listar();
         for (Pessoa p : lista) {
             if (p.getEmail().equals(email)) {
@@ -101,15 +102,15 @@ public class Controller {
                 p.setCidade(pessoa.getCidade());
                 p.setEstado(pessoa.getEstado());
                 p.setInteresse(pessoa.getInteresse());
-                return service.edit(p);
+                return ResponseEntity.ok().body(service.edit(p));
             }
         }
-        return pessoa;
+        return  ResponseEntity.ok().body(pessoa);
     }
 
     @PostMapping("/addPost")
-    public ResponseEntity<Post> addPost(@RequestBody Post post) {
-        return ResponseEntity.ok().body(postService.add(post));
+    public ResponseEntity<Post> addPost(@RequestBody @Valid Post post) {
+        return new ResponseEntity<>(postService.add(post), HttpStatus.CREATED);
     }
 
     @GetMapping("/verPost/{email}")
