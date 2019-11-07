@@ -44,12 +44,10 @@ class Pessoa {
     private String empresa;
 
     @NotBlank
-    @JsonFormat(pattern="dd-MM-yyyy")
-    private Date inicioDaAtividade;
+    private String inicioDaAtividade;
 
     @NotBlank
-    @JsonFormat(pattern="dd-MM-yyyy")
-    private Date dataNascimento;
+    private String dataNascimento;
 
     @NotBlank
     private String nivelEscolaridade;
