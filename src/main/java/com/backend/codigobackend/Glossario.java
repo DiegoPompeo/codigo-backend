@@ -20,6 +20,5 @@ class Glossario {
     @GenericGenerator(name = "increment", strategy= "increment")
     private int id;
 
-    @NotBlank
     private String nome;
 }
