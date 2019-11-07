@@ -31,8 +31,8 @@ public class Controller {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<Pessoa> adiciona(@Valid @RequestBody Pessoa p) {
-        return ResponseEntity.ok().body(service.add(p));
+    public Pessoa adiciona(@RequestBody @Valid Pessoa p) {
+        return service.add(p);
     }
 
     @PostMapping("/login")
