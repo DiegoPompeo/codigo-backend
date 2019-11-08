@@ -107,8 +107,8 @@ public class Controller {
     }
 
     @PostMapping("/addPost")
-    public ResponseEntity<Post> addPost(@RequestBody Post post) {
-        return ResponseEntity.ok().body(postService.add(post));
+    public Post addPost(@Valid @RequestBody Post post) {
+        return postService.add(post);
     }
 
     @GetMapping("/verPost/{email}")
