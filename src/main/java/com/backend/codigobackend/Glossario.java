@@ -1,8 +1,5 @@
 package com.backend.codigobackend;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
@@ -10,9 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
 class Glossario {
     @Id
     @GeneratedValue(generator = "increment")
@@ -20,4 +14,25 @@ class Glossario {
     private int id;
 
     private String nome;
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Glossario() {
+    }
+
+    public Glossario(int id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
+
 }
