@@ -1,10 +1,18 @@
 package com.backend.codigobackend;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 class PessoaRecomendada {
     @Id
     @GeneratedValue(generator = "increment")
@@ -14,33 +22,4 @@ class PessoaRecomendada {
     private String email;
 
     private String emailRecomendada;
-
-    public int getId() {
-        return id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getEmailRecomendada() {
-        return emailRecomendada;
-    }
-
-    public void setEmailRecomendada(String emailRecomendada) {
-        this.emailRecomendada = emailRecomendada;
-    }
-
-    public PessoaRecomendada(int id, String email, String emailRecomendada) {
-        this.id = id;
-        this.email = email;
-        this.emailRecomendada = emailRecomendada;
-    }
-
-    public PessoaRecomendada() {
-    }
 }
