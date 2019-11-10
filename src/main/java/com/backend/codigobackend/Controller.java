@@ -126,7 +126,7 @@ public class Controller {
     }
 
     @PostMapping("/addRecomendacao")
-    public PessoaRecomendada addRecomendacao(@RequestBody PessoaRecomendada pessoaRecomendada) {
+    public PessoaRecomendada addRecomendacao(@Valid @RequestBody PessoaRecomendada pessoaRecomendada) {
         return pessoaRecomendadaService.add(pessoaRecomendada);
     }
 
@@ -141,12 +141,12 @@ public class Controller {
     }
 
     @PostMapping("/addGlossario")
-    public ResponseEntity<Glossario> addGlossario(@RequestBody Glossario glossario){
+    public ResponseEntity<Glossario> addGlossario(@Valid @RequestBody Glossario glossario){
         return ResponseEntity.ok().body(glossarioService.add(glossario));
     }
 
     @PostMapping("/amizade")
-    public Amizade solicitaAmizade(@RequestBody Amizade amizade){
+    public Amizade solicitaAmizade(@Valid @RequestBody Amizade amizade){
         return amizadeService.add(amizade);
     }
 
@@ -172,7 +172,7 @@ public class Controller {
     }
 
     @GetMapping("/getAmizade/{email}")
-    public List<Amizade> getAmizade(@PathVariable("email") String email){
+    public List<Amizade> getAmizade(@Valid @PathVariable("email") String email){
         return amizadeService.listarEmail(email);
     }
 
@@ -180,7 +180,5 @@ public class Controller {
     public void recusaAmizade(@RequestBody Amizade amizade){
         amizadeService.delete(amizade);
     }
-
-
 
 }
