@@ -24,6 +24,8 @@ public class Controller {
     @Autowired
     private GlossarioService glossarioService;
 
+    @Autowired
+    private AmizadeService amizadeService;
 
     @GetMapping("")
     public List<Pessoa> lista() {
@@ -142,4 +144,43 @@ public class Controller {
     public ResponseEntity<Glossario> addGlossario(@RequestBody Glossario glossario){
         return ResponseEntity.ok().body(glossarioService.add(glossario));
     }
+
+    @PostMapping("/amizade")
+    public Amizade solicitaAmizade(@RequestBody Amizade amizade){
+        return amizadeService.add(amizade);
+    }
+
+    @PutMapping("/respostaSolicitacao/{email}")
+    public Amizade respostaSolicitacao(@Valid @RequestBody Amizade amizade, @PathVariable("email") String email){
+        List<Amizade> lista = amizadeService.listarAmizade();
+        for (Amizade a: lista){
+            if (a.getEmailMandatario().equals(email)){
+                a.setAceite(amizade.isAceite());
+                a.setEmailMandatario(amizade.getEmailMandatario());
+                a.setEmailRemetente(amizade.getEmailRemetente());
+                a.setRecusado(amizade.isRecusado());
+                a.setSolicitado(false);
+                return amizadeService.edit(a);
+            }
+        }
+        return amizadeService.add(amizade);
+    }
+
+    @GetMapping("/listaAmizade")
+    public List<Amizade> listaAmizade(){
+        return amizadeService.listarAmizade();
+    }
+
+    @GetMapping("/getAmizade/{email}")
+    public List<Amizade> getAmizade(@PathVariable("email") String email){
+        return amizadeService.listarEmail(email);
+    }
+
+    @DeleteMapping("/recusar")
+    public void recusaAmizade(@RequestBody Amizade amizade){
+        amizadeService.delete(amizade);
+    }
+
+
+
 }
