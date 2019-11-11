@@ -49,6 +49,6 @@ class Pessoa {
 
     private boolean paga;
 
-    private String curtir;
+    private int curtir;
 
 }
