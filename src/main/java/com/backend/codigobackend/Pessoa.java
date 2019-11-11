@@ -31,6 +31,8 @@ class Pessoa {
 
     private String nomeNoCartao;
 
+    private String dataValidade;
+
     private String codSeg;
 
     private String empresa;
@@ -47,6 +49,6 @@ class Pessoa {
 
     private boolean paga;
 
-    private int curtidas = 0;
+    private String curtir;
 
 }
