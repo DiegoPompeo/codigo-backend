@@ -26,5 +26,5 @@ class Post {
     private String email;
 
     @Column
-    private int curtida;
+    private Integer curtida;
 }
