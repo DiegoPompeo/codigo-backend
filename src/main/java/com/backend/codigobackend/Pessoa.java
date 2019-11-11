@@ -49,5 +49,7 @@ class Pessoa {
 
     private boolean paga;
 
+    @Column
+    private int curtida;
 
 }
