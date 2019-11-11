@@ -102,6 +102,7 @@ public class Controller {
                 p.setCidade(pessoa.getCidade());
                 p.setEstado(pessoa.getEstado());
                 p.setInteresse(pessoa.getInteresse());
+                p.setCurtidas(pessoa.getCurtidas());
                 return service.edit(p);
             }
         }
