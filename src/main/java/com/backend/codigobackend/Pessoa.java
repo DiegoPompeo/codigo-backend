@@ -49,6 +49,5 @@ class Pessoa {
 
     private boolean paga;
 
-    private int curtir;
 
 }
