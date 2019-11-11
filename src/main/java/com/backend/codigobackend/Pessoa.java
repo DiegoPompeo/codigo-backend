@@ -31,8 +31,6 @@ class Pessoa {
 
     private String nomeNoCartao;
 
-    private String dataValidade;
-
     private String codSeg;
 
     private String empresa;
