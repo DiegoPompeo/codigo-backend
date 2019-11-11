@@ -50,6 +50,6 @@ class Pessoa {
     private boolean paga;
 
     @Column
-    private int curtida;
+    private int curtida = 0;
 
 }
