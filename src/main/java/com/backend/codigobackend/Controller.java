@@ -172,7 +172,7 @@ public class Controller {
     }
 
     @GetMapping("/getAmizade/{email}")
-    public List<Amizade> getAmizade(@Valid @PathVariable("email") String email){
+    public List<Amizade> getAmizade(@PathVariable("email") String email){
         return amizadeService.listarEmail(email);
     }
 

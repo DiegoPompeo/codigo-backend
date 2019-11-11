@@ -21,9 +21,9 @@ class Post {
     @GenericGenerator(name = "increment", strategy = "increment")
     private int id;
 
-    @Column
     private String conteudo;
 
-    @Column
     private String email;
+
+    private int curtida;
 }
