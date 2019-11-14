@@ -8,7 +8,7 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
-@CrossOrigin("*")
+@CrossOrigin(origins = "*", allowCredentials = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/redesocial")
 public class Controller {
