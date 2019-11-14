@@ -109,7 +109,7 @@ public class Controller {
         return pessoa;
     }
 
-    @PostMapping("/addPost/")
+    @PostMapping("/addPost")
     public Post addPost(@Valid @RequestBody Post post) {
         return postService.add(post);
     }
