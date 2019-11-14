@@ -8,7 +8,7 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
-@CrossOrigin("*")
+@CrossOrigin("https://server-redesocial.herokuapp.com/redesocial/")
 @RestController
 @RequestMapping("/redesocial")
 public class Controller {
@@ -32,12 +32,12 @@ public class Controller {
         return service.listar();
     }
 
-    @PostMapping("/signup")
+    @PostMapping("/signup/")
     public Pessoa adiciona(@Valid @RequestBody Pessoa p) {
         return service.add(p);
     }
 
-    @PostMapping("/login")
+    @PostMapping("/login/")
     public Pessoa login(@RequestBody Pessoa p) {
         List<Pessoa> lista = service.listar();
         String email = p.getEmail();
@@ -109,7 +109,7 @@ public class Controller {
         return pessoa;
     }
 
-    @PostMapping("/addPost")
+    @PostMapping("/addPost/")
     public Post addPost(@Valid @RequestBody Post post) {
         return postService.add(post);
     }
@@ -126,7 +126,7 @@ public class Controller {
         return listaPostEmail;
     }
 
-    @PostMapping("/addRecomendacao")
+    @PostMapping("/addRecomendacao/")
     public PessoaRecomendada addRecomendacao(@Valid @RequestBody PessoaRecomendada pessoaRecomendada) {
         return pessoaRecomendadaService.add(pessoaRecomendada);
     }
@@ -141,17 +141,17 @@ public class Controller {
         return glossarioService.listar();
     }
 
-    @PostMapping("/addGlossario")
+    @PostMapping("/addGlossario/")
     public ResponseEntity<Glossario> addGlossario(@Valid @RequestBody Glossario glossario){
         return ResponseEntity.ok().body(glossarioService.add(glossario));
     }
 
-    @PostMapping("/amizade")
+    @PostMapping("/amizade/")
     public Amizade solicitaAmizade(@Valid @RequestBody Amizade amizade){
         return amizadeService.add(amizade);
     }
 
-    @PutMapping("/respostaSolicitacao/{email}")
+    @PutMapping("/respostaSolicitacao/{email}/")
     public Amizade respostaSolicitacao(@Valid @RequestBody Amizade amizade, @PathVariable("email") String email){
         List<Amizade> lista = amizadeService.listarAmizade();
         for (Amizade a: lista){
