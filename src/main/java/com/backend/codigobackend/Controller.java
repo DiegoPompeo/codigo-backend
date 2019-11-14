@@ -8,7 +8,7 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
-@CrossOrigin(origins = "*", allowCredentials = "*", allowedHeaders = "*")
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/redesocial")
 public class Controller {
@@ -151,7 +151,7 @@ public class Controller {
         return amizadeService.add(amizade);
     }
 
-    @PutMapping("/respostaSolicitacao/{email}/")
+    @PutMapping("/respostaSolicitacao/{email}")
     public Amizade respostaSolicitacao(@Valid @RequestBody Amizade amizade, @PathVariable("email") String email){
         List<Amizade> lista = amizadeService.listarAmizade();
         for (Amizade a: lista){
