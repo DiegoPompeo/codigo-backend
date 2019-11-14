@@ -8,7 +8,7 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
-@CrossOrigin(origins = {"https://server-redesocial.herokuapp.com","https://redecientista.herokuapp.com/"})
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/redesocial")
 public class Controller {
