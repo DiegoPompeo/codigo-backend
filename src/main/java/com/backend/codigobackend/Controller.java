@@ -11,7 +11,7 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/redesocial")
-public class Controller {
+class Controller {
     @Autowired
     private PessoaService service;
 
