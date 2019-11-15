@@ -13,7 +13,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-class Glossario {
+public class Glossario {
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy= "increment")

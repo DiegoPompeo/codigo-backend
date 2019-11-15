@@ -1,5 +1,5 @@
 package com.backend.codigobackend;
 
-class CurtirPost {
+public class CurtirPost {
 
 }
