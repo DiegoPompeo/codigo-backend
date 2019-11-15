@@ -12,7 +12,7 @@ import javax.validation.constraints.Email;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-class Pessoa {
+public class Pessoa {
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
