@@ -1,5 +1,5 @@
 package com.backend.codigobackend;
 
-public class PostServiceImp {
+class CurtirPost {
 
 }

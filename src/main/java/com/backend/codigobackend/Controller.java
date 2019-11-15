@@ -27,19 +27,16 @@ public class Controller {
     @Autowired
     private AmizadeService amizadeService;
 
-    @CrossOrigin(origins = "*")
     @GetMapping("")
     public List<Pessoa> lista() {
         return service.listar();
     }
 
-    @CrossOrigin(origins = "*")
     @PostMapping("/signup")
     public Pessoa adiciona(@Valid @RequestBody Pessoa p) {
         return service.add(p);
     }
 
-    @CrossOrigin(origins = "*")
     @PostMapping("/login")
     public Pessoa login(@RequestBody Pessoa p) {
         List<Pessoa> lista = service.listar();
@@ -53,7 +50,6 @@ public class Controller {
         return null;
     }
 
-    @CrossOrigin(origins = "*")
     @GetMapping("/email/{email}")
     public boolean verifica(@PathVariable("email") String email) {
         List<Pessoa> lista = service.listar();
@@ -65,7 +61,6 @@ public class Controller {
         return false;
     }
 
-    @CrossOrigin(origins = "*")
     @GetMapping("/buscar/{email}")
     public Pessoa busca(@PathVariable("email") String email) {
         List<Pessoa> lista = service.listar();
@@ -77,19 +72,16 @@ public class Controller {
         return null;
     }
 
-    @CrossOrigin(origins = "*")
     @GetMapping("/buscarCientista/{nome}")
     public List<Pessoa> buscaCientista(@PathVariable("nome") String nome) {
         return service.findNome(nome);
     }
 
-    @CrossOrigin(origins = "*")
     @GetMapping("/perfil/{id}")
     public Pessoa perfil(@PathVariable("id") int id) {
         return service.listarId(id);
     }
 
-    @CrossOrigin(origins = "*")
     @PutMapping("/editar/{email}")
     public Pessoa editar(@Valid @RequestBody Pessoa pessoa, @PathVariable("email") String email) {
         List<Pessoa> lista = service.listar();
@@ -117,13 +109,11 @@ public class Controller {
         return pessoa;
     }
 
-    @CrossOrigin(origins = "*")
     @PostMapping("/addPost")
     public Post addPost(@Valid @RequestBody Post post) {
         return postService.add(post);
     }
 
-    @CrossOrigin(origins = "*")
     @GetMapping("/verPost/{email}")
     public List<Post> buscaPost(@PathVariable("email") String email) {
         List<Post> lista = postService.listar();
@@ -136,37 +126,31 @@ public class Controller {
         return listaPostEmail;
     }
 
-    @CrossOrigin(origins = "*")
     @PostMapping("/addRecomendacao")
     public PessoaRecomendada addRecomendacao(@Valid @RequestBody PessoaRecomendada pessoaRecomendada) {
         return pessoaRecomendadaService.add(pessoaRecomendada);
     }
 
-    @CrossOrigin(origins = "*")
     @GetMapping("/getRecomendacao")
     public List<PessoaRecomendada> listRecomendacao() {
         return pessoaRecomendadaService.listar();
     }
 
-    @CrossOrigin(origins = "*")
     @GetMapping("/glossario")
     public List<Glossario> listaGlossario() {
         return glossarioService.listar();
     }
 
-    @CrossOrigin(origins = "*")
     @PostMapping("/addGlossario")
     public ResponseEntity<Glossario> addGlossario(@Valid @RequestBody Glossario glossario){
         return ResponseEntity.ok().body(glossarioService.add(glossario));
     }
 
-    @CrossOrigin(origins = "*")
     @PostMapping("/amizade")
     public Amizade solicitaAmizade(@Valid @RequestBody Amizade amizade){
         return amizadeService.add(amizade);
     }
 
-    @CrossOrigin(origins = "*")
     @PutMapping("/respostaSolicitacao/{email}")
     public Amizade respostaSolicitacao(@Valid @RequestBody Amizade amizade, @PathVariable("email") String email){
         List<Amizade> lista = amizadeService.listarAmizade();
@@ -183,19 +167,16 @@ public class Controller {
         return amizadeService.add(amizade);
     }
 
-    @CrossOrigin(origins = "*")
     @GetMapping("/listaAmizade")
     public List<Amizade> listaAmizade(){
         return amizadeService.listarAmizade();
     }
 
-    @CrossOrigin(origins = "*")
     @GetMapping("/getAmizade/{email}")
     public List<Amizade> getAmizade(@PathVariable("email") String email){
         return amizadeService.listarEmail(email);
     }
 
-    @CrossOrigin(origins = "*")
     @DeleteMapping("/recusar")
     public void recusaAmizade(@RequestBody Amizade amizade){
         amizadeService.delete(amizade);
