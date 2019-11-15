@@ -1,6 +1,7 @@
 package com.backend.codigobackend;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.Repository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,14 +28,17 @@ class Controller {
     @Autowired
     private AmizadeService amizadeService;
 
+    @Autowired
+    private PessoaRepository pessoaRepository;
+
     @GetMapping("")
     public List<Pessoa> lista() {
-        return service.listar();
+        return pessoaRepository.findAll();
     }
 
     @PostMapping("/signup")
     public Pessoa adiciona(@Valid @RequestBody Pessoa p) {
-        return service.add(p);
+        return pessoaRepository.save(p);
     }
 
     @PostMapping("/login")
