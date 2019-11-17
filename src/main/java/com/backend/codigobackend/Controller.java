@@ -162,12 +162,12 @@ class Controller {
     public Amizade respostaSolicitacao(@Valid @RequestBody Amizade amizade, @PathVariable("email") String email){
         List<Amizade> lista = amizadeService.listarAmizade();
         for (Amizade a: lista){
-            if (a.getEmailMandatario().equals(email)){
+            if (a.getEmailMandatario().equals(email) || a.getEmailRemetente().equals(email)){
                 a.setAceite(amizade.isAceite());
                 a.setEmailMandatario(amizade.getEmailMandatario());
                 a.setEmailRemetente(amizade.getEmailRemetente());
                 a.setRecusado(amizade.isRecusado());
-                a.setSolicitado(false);
+                a.setSolicitado(amizade.isSolicitado());
                 return amizadeService.edit(a);
             }
         }
