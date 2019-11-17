@@ -8,7 +8,6 @@ public interface CurtirPostRepository extends Repository<CurtirPost, Integer> {
     List<CurtirPost> findAll();
     CurtirPost findById(int id);
     CurtirPost save(CurtirPost curtirPost);
-    CurtirPost edit(CurtirPost curtirPost);
     void delete(CurtirPost curtirPost);
     CurtirPost findByEmailCurtiu(String emailCurtiu);
     CurtirPost findByEmailCurtido(String emailCurtido);
