@@ -14,7 +14,12 @@ public class PessoaRecomendadaServiceImp implements PessoaRecomendadaService{
 
     @Override
     public PessoaRecomendada add(PessoaRecomendada pessoaRecomendada) {
-        return repository.save((pessoaRecomendada));
+        return repository.save(pessoaRecomendada);
+    }
+
+    @Override
+    public PessoaRecomendada edit(PessoaRecomendada pessoaRecomendada) {
+        return repository.save(pessoaRecomendada);
     }
 
     @Override

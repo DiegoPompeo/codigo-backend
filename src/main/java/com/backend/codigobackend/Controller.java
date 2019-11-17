@@ -143,6 +143,20 @@ class Controller {
         return pessoaRecomendadaService.listar();
     }
 
+    @PutMapping("/editRecomendacao/{email}")
+    public PessoaRecomendada editRecomendacao(@Valid @RequestBody PessoaRecomendada pessoaRecomendada, @PathVariable("email") String email){
+        List<PessoaRecomendada> lista = pessoaRecomendadaService.listar();
+        for (PessoaRecomendada p : lista) {
+            if (p.getEmailRecomendou().equals(email) || p.getEmailRecomendada().equals(email)){
+                p.setEmailRecomendada(pessoaRecomendada.getEmailRecomendada());
+                p.setEmailRecomendou(pessoaRecomendada.getEmailRecomendou());
+                p.setDesfazer(pessoaRecomendada.isDesfazer());
+                return pessoaRecomendadaService.edit(p);
+            }
+        }
+        return pessoaRecomendadaService.add(pessoaRecomendada);
+    }
+
     @GetMapping("/glossario")
     public List<Glossario> listaGlossario() {
         return glossarioService.listar();
