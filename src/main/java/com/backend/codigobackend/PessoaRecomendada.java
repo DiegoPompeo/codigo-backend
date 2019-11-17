@@ -17,7 +17,9 @@ public class PessoaRecomendada {
     @GenericGenerator(name = "increment", strategy = "increment")
     private int id;
 
-    private String email;
+    private String emailRecomendou;
 
     private String emailRecomendada;
+
+    private boolean desfazer;
 }

@@ -31,6 +31,9 @@ class Controller {
     @Autowired
     private PessoaRepository pessoaRepository;
 
+    @Autowired
+    private CurtirPostService curtirPostService;
+
     @GetMapping("")
     public List<Pessoa> lista() {
         return pessoaRepository.findAll();
@@ -186,4 +189,43 @@ class Controller {
         amizadeService.delete(amizade);
     }
 
+    @PostMapping("/postagemCurtida")
+    public CurtirPost postagemCurtida(@Valid @RequestBody CurtirPost curtirPost){
+        return curtirPostService.save(curtirPost);
+    }
+
+    @PutMapping("/atualizaCurtida/{idPost}")
+    public CurtirPost atualizaCurtida(@Valid @RequestBody CurtirPost curtirPost, @PathVariable("idPost") String idPost){
+        List<CurtirPost> lista = curtirPostService.findAll();
+        for (CurtirPost c: lista){
+            if (c.getIdPost().equals(idPost)){
+                c.setDescurtiu(curtirPost.isDescurtiu());
+                c.setEmailCurtido(curtirPost.getEmailCurtido());
+                c.setEmailCurtiu(curtirPost.getEmailCurtiu());
+                c.setIdPost(curtirPost.getIdPost());
+                return curtirPostService.edit(c);
+            }
+        }
+        return curtirPostService.save(curtirPost);
+    }
+
+    @GetMapping("/listaCurtidaPost")
+    public List<CurtirPost> listaCurtidaPost(){
+        return curtirPostService.findAll();
+    }
+
+    @GetMapping("/getIdPost/{idPost}")
+    public CurtirPost getIdPost(@PathVariable("idPost") String idPost){
+        return curtirPostService.findByIdPost(idPost);
+    }
+
+    @GetMapping("/getCurtido/{emailCurtido}")
+    public CurtirPost getCurtido(@PathVariable("emailCurtido") String emailCurtido){
+        return curtirPostService.findByEmailCurtido(emailCurtido);
+    }
+
+    @GetMapping("/getCurtiu/{emailCurtiu}")
+    public CurtirPost getCurtiu(@PathVariable("emailCurtiu") String emailCurtiu){
+        return curtirPostService.findByEmailCurtiu(emailCurtiu);
+    }
 }
