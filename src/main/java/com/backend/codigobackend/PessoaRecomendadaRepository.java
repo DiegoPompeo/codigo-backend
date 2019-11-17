@@ -9,5 +9,5 @@ public interface PessoaRecomendadaRepository extends Repository<PessoaRecomendad
     PessoaRecomendada findById(int id);
     PessoaRecomendada save(PessoaRecomendada pessoa);
     void delete(PessoaRecomendada pessoa);
-    boolean findByEmail(String email);
+    boolean findByEmailRecomendou(String emailRecomendou);
 }
