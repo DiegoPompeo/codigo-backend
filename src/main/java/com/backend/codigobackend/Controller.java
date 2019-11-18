@@ -181,11 +181,28 @@ class Controller {
         List<Amizade> lista = amizadeService.listarAmizade();
         for (Amizade a: lista){
             if (a.getEmailMandatario().equals(emailMandatario) && a.getEmailRemetente().equals(emailRemetente)){
-                a.setAceite(amizade.isAceite());
+                a.setEmailMandatario(amizade.getEmailMandatario());
+                a.setEmailRemetente(amizade.getEmailRemetente());
+                a.setRecusado(false);
+                a.setSolicitado(false);
+                a.setAceite(true);
+                return amizadeService.edit(a);
+            }
+        }
+        return amizadeService.add(amizade);
+    }
+    @PutMapping("/recusaSolicitacao/{emailMandatario}/{emailRemetente}")
+    public Amizade recusaSolicitacao(@Valid @RequestBody Amizade amizade,
+                                       @PathVariable("emailMandatario") String emailMandatario,
+                                       @PathVariable("emailRemetente") String emailRemetente){
+        List<Amizade> lista = amizadeService.listarAmizade();
+        for (Amizade a: lista){
+            if (a.getEmailMandatario().equals(emailMandatario) && a.getEmailRemetente().equals(emailRemetente)){
                 a.setEmailMandatario(amizade.getEmailMandatario());
                 a.setEmailRemetente(amizade.getEmailRemetente());
                 a.setRecusado(true);
                 a.setSolicitado(false);
+                a.setAceite(false);
                 return amizadeService.edit(a);
             }
         }
