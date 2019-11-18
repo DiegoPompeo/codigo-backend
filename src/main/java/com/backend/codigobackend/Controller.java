@@ -184,8 +184,8 @@ class Controller {
                 a.setAceite(amizade.isAceite());
                 a.setEmailMandatario(amizade.getEmailMandatario());
                 a.setEmailRemetente(amizade.getEmailRemetente());
-                a.setRecusado(amizade.isRecusado());
-                a.setSolicitado(amizade.isSolicitado());
+                a.setRecusado(true);
+                a.setSolicitado(false);
                 return amizadeService.edit(a);
             }
         }
