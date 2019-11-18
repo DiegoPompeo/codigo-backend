@@ -27,5 +27,5 @@ public class Post {
     private String codPost;
 
     @Column
-    private Integer curtida;
+    private Integer curtidas;
 }

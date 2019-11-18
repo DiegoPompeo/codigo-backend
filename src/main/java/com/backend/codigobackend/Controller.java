@@ -134,12 +134,16 @@ class Controller {
     @PutMapping("/atualizaPost/{codPost}")
     public Post atualizaPost(@Valid @RequestBody Post post,
                              @PathVariable("codPost") String codPost){
-        Post p = postService.listarId(codPost);
-        p.setConteudo(post.getConteudo());
-        p.setCurtida(post.getCurtida());
-        p.setCodPost(post.getCodPost());
-        p.setEmail(post.getEmail());
-        return postService.edit(p);
+        List<Post> lista = postService.listar();
+        for (int i = 0; i < lista.size(); i++) {
+            if (lista.get(i).getCodPost().equals(codPost)){
+                lista.get(i).setEmail(post.getEmail());
+                lista.get(i).setCurtidas(post.getCurtidas());
+                lista.get(i).setConteudo(post.getConteudo());
+                return postService.edit(lista.get(i));
+            }
+        }
+        return postService.add(post);
     }
 
     @GetMapping("/verPost/{email}")
