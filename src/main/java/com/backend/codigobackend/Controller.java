@@ -123,7 +123,7 @@ class Controller {
         StringBuilder codPost = new StringBuilder("abc");
         while(cont < 5){
             cont++;
-            codPost.append(r.nextInt());
+            codPost.append(r.nextInt(9));
         }
         post.setCodPost(codPost.toString());
         return postService.add(post);

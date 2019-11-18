@@ -19,7 +19,7 @@ class PostService {
     }
 
     Post listarId(String codPost) {
-        return repository.findById(codPost);
+        return repository.findByCodPost(codPost);
     }
 
     Post add(Post post) {
