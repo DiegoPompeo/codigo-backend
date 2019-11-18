@@ -138,10 +138,10 @@ class Controller {
         List<Post> lista = postService.listar();
         for (Post value : lista) {
             if (value.getCodPost().equals(codPost)) {
-                value.setCodPost(post.getCodPost());
-                value.setEmail(post.getEmail());
-                value.setCurtidas(post.getCurtidas());
-                value.setConteudo(post.getConteudo());
+                value.setCodPost("abcdefgij");
+                value.setEmail("diego_2008cp@hotmail.com");
+                value.setCurtidas(1);
+                value.setConteudo("Teste");
                 return postService.edit(value);
             }
         }

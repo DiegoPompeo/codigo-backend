@@ -26,7 +26,6 @@ public class Post {
 
     private String codPost;
 
-
     @Column
     private Integer curtidas;
 }
