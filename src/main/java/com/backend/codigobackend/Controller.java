@@ -143,8 +143,8 @@ class Controller {
         return pessoaRecomendadaService.listar();
     }
 
-    @PutMapping("/editRecomendacao/{emailRecomendou}/{emailRecomendada}")
-    public PessoaRecomendada editRecomendacao(@Valid @RequestBody PessoaRecomendada pessoaRecomendada,
+    @PutMapping("/recomendou/{emailRecomendou}/{emailRecomendada}")
+    public PessoaRecomendada recomendou(@Valid @RequestBody PessoaRecomendada pessoaRecomendada,
                                               @PathVariable("emailRecomendou") String emailRecomendou,
                                               @PathVariable("emailRecomendada") String emailRecomendada){
         List<PessoaRecomendada> lista = pessoaRecomendadaService.listar();
@@ -152,8 +152,24 @@ class Controller {
             if (p.getEmailRecomendou().equals(emailRecomendou) && p.getEmailRecomendada().equals(emailRecomendada)){
                     p.setEmailRecomendada(pessoaRecomendada.getEmailRecomendada());
                     p.setEmailRecomendou(pessoaRecomendada.getEmailRecomendou());
-                    p.setDesfazer(pessoaRecomendada.isDesfazer());
+                    p.setDesfazer(false);
                     return pessoaRecomendadaService.edit(p);
+            }
+        }
+        return pessoaRecomendadaService.add(pessoaRecomendada);
+    }
+
+    @PutMapping("/desrecomendou/{emailRecomendou}/{emailRecomendada}")
+    public PessoaRecomendada desrecomendou(@Valid @RequestBody PessoaRecomendada pessoaRecomendada,
+                                        @PathVariable("emailRecomendou") String emailRecomendou,
+                                        @PathVariable("emailRecomendada") String emailRecomendada){
+        List<PessoaRecomendada> lista = pessoaRecomendadaService.listar();
+        for (PessoaRecomendada p : lista) {
+            if (p.getEmailRecomendou().equals(emailRecomendou) && p.getEmailRecomendada().equals(emailRecomendada)){
+                p.setEmailRecomendada(pessoaRecomendada.getEmailRecomendada());
+                p.setEmailRecomendou(pessoaRecomendada.getEmailRecomendou());
+                p.setDesfazer(true);
+                return pessoaRecomendadaService.edit(p);
             }
         }
         return pessoaRecomendadaService.add(pessoaRecomendada);
