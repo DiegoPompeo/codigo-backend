@@ -174,11 +174,13 @@ class Controller {
         return amizadeService.add(amizade);
     }
 
-    @PutMapping("/respostaSolicitacao/{email}")
-    public Amizade respostaSolicitacao(@Valid @RequestBody Amizade amizade, @PathVariable("email") String email){
+    @PutMapping("/respostaSolicitacao/{emailMandatario}/{emailRemetente}")
+    public Amizade respostaSolicitacao(@Valid @RequestBody Amizade amizade,
+                                       @PathVariable("emailMandatario") String emailMandatario,
+                                       @PathVariable("emailRemetente") String emailRemetente){
         List<Amizade> lista = amizadeService.listarAmizade();
         for (Amizade a: lista){
-            if (a.getEmailMandatario().equals(email) || a.getEmailRemetente().equals(email)){
+            if (a.getEmailMandatario().equals(emailMandatario) && a.getEmailRemetente().equals(emailRemetente)){
                 a.setAceite(amizade.isAceite());
                 a.setEmailMandatario(amizade.getEmailMandatario());
                 a.setEmailRemetente(amizade.getEmailRemetente());
