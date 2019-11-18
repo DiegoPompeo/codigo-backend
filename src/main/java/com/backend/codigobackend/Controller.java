@@ -127,6 +127,7 @@ class Controller {
             cont++;
             codPost.append(alfabeto[r.nextInt(9)]);
         }
+        post.setCurtidas(0);
         post.setCodPost(codPost.toString());
         return postService.add(post);
     }
