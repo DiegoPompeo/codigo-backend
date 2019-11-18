@@ -135,14 +135,15 @@ class Controller {
     public Post atualizaPost(@Valid @RequestBody Post post,
                              @PathVariable("codPost") String codPost){
         List<Post> lista = postService.listar();
-        for (int i = 0; i < lista.size(); i++) {
-            if (lista.get(i).getCodPost().equals(codPost)){
-                lista.get(i).setEmail(post.getEmail());
-                lista.get(i).setCurtidas(post.getCurtidas());
-                lista.get(i).setConteudo(post.getConteudo());
-                return postService.edit(lista.get(i));
+        for (Post value : lista) {
+            if (value.getCodPost().equals(codPost)) {
+                value.setEmail(post.getEmail());
+                value.setCurtidas(post.getCurtidas());
+                value.setConteudo(post.getConteudo());
+                return postService.edit(value);
             }
         }
+
         return postService.add(post);
     }
 
