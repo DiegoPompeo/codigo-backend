@@ -143,18 +143,20 @@ class Controller {
         return pessoaRecomendadaService.listar();
     }
 
-    @PutMapping("/editRecomendacao/{email}")
-    public PessoaRecomendada editRecomendacao(@Valid @RequestBody PessoaRecomendada pessoaRecomendada, @PathVariable("email") String email){
+    @PutMapping("/editRecomendacao/{emailRecomendou}/{emailRecomendada}")
+    public PessoaRecomendada editRecomendacao(@Valid @RequestBody PessoaRecomendada pessoaRecomendada,
+                                              @PathVariable("emailRecomendou") String emailRecomendou,
+                                              @PathVariable("emailRecomendada") String emailRecomendada){
         List<PessoaRecomendada> lista = pessoaRecomendadaService.listar();
         for (PessoaRecomendada p : lista) {
-            if (p.getEmailRecomendou().equals(email) || p.getEmailRecomendada().equals(email)){
+            if (p.getEmailRecomendou().equals(emailRecomendou) && p.getEmailRecomendada().equals(emailRecomendada)){
                 if(p.isDesfazer()){
                     p.setEmailRecomendada(pessoaRecomendada.getEmailRecomendada());
                     p.setEmailRecomendou(pessoaRecomendada.getEmailRecomendou());
                     p.setDesfazer(false);
 
                     return pessoaRecomendadaService.edit(p);
-                } else {
+                } else if (!p.isDesfazer()){
                     p.setEmailRecomendada(pessoaRecomendada.getEmailRecomendada());
                     p.setEmailRecomendou(pessoaRecomendada.getEmailRecomendou());
                     p.setDesfazer(true);
