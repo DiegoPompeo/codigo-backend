@@ -121,9 +121,9 @@ class Controller {
         Random r = new Random();
         int cont = 0;
         StringBuilder codPost = new StringBuilder("abc");
-        String[] alfabeto= {"a","b","c","d","e","f","g","h","i","j"};
 
         while(cont < 5){
+            String[] alfabeto= {"a","b","c","d","e","f","g","h","i","j"};
             cont++;
             codPost.append(alfabeto[r.nextInt(9)]);
         }
