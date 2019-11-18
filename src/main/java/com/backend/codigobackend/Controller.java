@@ -127,7 +127,7 @@ class Controller {
             cont++;
             codPost.append(alfabeto[r.nextInt(9)]);
         }
-        post.setCurtidas(0);
+
         post.setCodPost(codPost.toString());
         return postService.add(post);
     }
@@ -138,13 +138,13 @@ class Controller {
         List<Post> lista = postService.listar();
         for (Post value : lista) {
             if (value.getCodPost().equals(codPost)) {
+                value.setCodPost(post.getCodPost());
                 value.setEmail(post.getEmail());
                 value.setCurtidas(post.getCurtidas());
                 value.setConteudo(post.getConteudo());
                 return postService.edit(value);
             }
         }
-
         return postService.add(post);
     }
 
