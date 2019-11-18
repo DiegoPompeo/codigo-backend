@@ -150,19 +150,10 @@ class Controller {
         List<PessoaRecomendada> lista = pessoaRecomendadaService.listar();
         for (PessoaRecomendada p : lista) {
             if (p.getEmailRecomendou().equals(emailRecomendou) && p.getEmailRecomendada().equals(emailRecomendada)){
-                if(p.isDesfazer()){
                     p.setEmailRecomendada(pessoaRecomendada.getEmailRecomendada());
                     p.setEmailRecomendou(pessoaRecomendada.getEmailRecomendou());
-                    p.setDesfazer(false);
-
+                    p.setDesfazer(pessoaRecomendada.isDesfazer());
                     return pessoaRecomendadaService.edit(p);
-                } else if (!p.isDesfazer()){
-                    p.setEmailRecomendada(pessoaRecomendada.getEmailRecomendada());
-                    p.setEmailRecomendou(pessoaRecomendada.getEmailRecomendou());
-                    p.setDesfazer(true);
-
-                    return pessoaRecomendadaService.edit(p);
-                }
             }
         }
         return pessoaRecomendadaService.add(pessoaRecomendada);
