@@ -1,15 +1,15 @@
 package com.backend.codigobackend;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.Repository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/redesocial")
 class Controller {
@@ -118,15 +118,24 @@ class Controller {
 
     @PostMapping("/addPost")
     public Post addPost(@Valid @RequestBody Post post) {
+        Random r = new Random();
+        int cont = 0;
+        StringBuilder codPost = new StringBuilder("abc");
+        while(cont < 5){
+            cont++;
+            codPost.append(r.nextInt());
+        }
+        post.setCodPost(codPost.toString());
         return postService.add(post);
     }
 
-    @PutMapping("/atualizaPost/{id}")
+    @PutMapping("/atualizaPost/{codPost}")
     public Post atualizaPost(@Valid @RequestBody Post post,
-                             @PathVariable("id") int id){
-        Post p = postService.listarId(id);
+                             @PathVariable("codPost") String codPost){
+        Post p = postService.listarId(codPost);
         p.setConteudo(post.getConteudo());
         p.setCurtida(post.getCurtida());
+        p.setCodPost(post.getCodPost());
         p.setEmail(post.getEmail());
         return postService.edit(p);
     }

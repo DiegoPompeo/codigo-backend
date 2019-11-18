@@ -18,8 +18,8 @@ class PostService {
         return repository.save(post);
     }
 
-    Post listarId(int id) {
-        return repository.findById(id);
+    Post listarId(String codPost) {
+        return repository.findById(codPost);
     }
 
     Post add(Post post) {
