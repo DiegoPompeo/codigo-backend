@@ -150,7 +150,7 @@ class Controller {
             if (p.getEmailRecomendou().equals(email) || p.getEmailRecomendada().equals(email)){
                 p.setEmailRecomendada(pessoaRecomendada.getEmailRecomendada());
                 p.setEmailRecomendou(pessoaRecomendada.getEmailRecomendou());
-                p.setDesfazer(pessoaRecomendada.isDesfazer());
+                p.setDesfazer(false);
                 return pessoaRecomendadaService.edit(p);
             }
         }
