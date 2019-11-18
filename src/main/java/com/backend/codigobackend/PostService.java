@@ -14,6 +14,10 @@ class PostService {
         return repository.findAll();
     }
 
+    Post edit(Post post){
+        return repository.save(post);
+    }
+
     Post listarId(int id) {
         return repository.findById(id);
     }

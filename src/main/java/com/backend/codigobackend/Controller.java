@@ -121,6 +121,16 @@ class Controller {
         return postService.add(post);
     }
 
+    @PutMapping("/atualizaPost/{id}")
+    public Post atualizaPost(@Valid @RequestBody Post post,
+                             @PathVariable("id") int id){
+        Post p = postService.listarId(id);
+        p.setConteudo(post.getConteudo());
+        p.setCurtida(post.getCurtida());
+        p.setEmail(post.getEmail());
+        return postService.edit(p);
+    }
+
     @GetMapping("/verPost/{email}")
     public List<Post> buscaPost(@PathVariable("email") String email) {
         List<Post> lista = postService.listar();
