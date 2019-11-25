@@ -160,6 +160,7 @@ class Controller {
 
     @PostMapping("/curtir")
     public CurtirPost curtir(@Valid @RequestBody CurtirPost curtirPost){
+        curtirPost.setCurtiu(true);
         return curtirPostService.save(curtirPost);
     }
 

@@ -24,4 +24,6 @@ public class CurtirPost {
     private String emailCurtido;
 
     private String idPost;
+
+    private boolean curtiu;
 }
