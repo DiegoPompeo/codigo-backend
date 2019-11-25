@@ -110,6 +110,7 @@ class Controller {
                 p.setEstado(pessoa.getEstado());
                 p.setInteresse(pessoa.getInteresse());
                 p.setCurtida(pessoa.getCurtida());
+                p.setCurtir(pessoa.getCurtir());
                 return service.edit(p);
             }
         }
