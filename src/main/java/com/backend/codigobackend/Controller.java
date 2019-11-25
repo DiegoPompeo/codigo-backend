@@ -164,6 +164,11 @@ class Controller {
         return curtirPostService.save(curtirPost);
     }
 
+    @GetMapping("/listaCurtida")
+    public List<CurtirPost> listaCurtida(){
+        return curtirPostService.findAll();
+    }
+
     @DeleteMapping("/descurtir/{codPost}")
     public void descurtir(@PathVariable("email") String idPost){
         List<CurtirPost> lista = curtirPostService.findAll();
