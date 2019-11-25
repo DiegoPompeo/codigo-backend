@@ -52,4 +52,6 @@ public class Pessoa {
     @Column
     private Integer curtida;
 
+    @Column
+    private Integer curtir;
 }
