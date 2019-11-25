@@ -169,8 +169,19 @@ class Controller {
         return curtirPostService.findAll();
     }
 
+    @GetMapping("/verificaCurtida/{codPost}")
+    public boolean verificaCurtida(@PathVariable("codPost") String idPost){
+        List<CurtirPost> lista = curtirPostService.findAll();
+        for (CurtirPost curtirPost : lista) {
+            if (curtirPost.getIdPost().equals(idPost)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @DeleteMapping("/descurtir/{codPost}")
-    public void descurtir(@PathVariable("email") String idPost){
+    public void descurtir(@PathVariable("codPost") String idPost){
         List<CurtirPost> lista = curtirPostService.findAll();
         for (CurtirPost curtirPost: lista) {
             if (curtirPost.getIdPost().equals(idPost)){
